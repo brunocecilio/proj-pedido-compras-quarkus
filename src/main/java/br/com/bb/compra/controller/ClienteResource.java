@@ -1,9 +1,6 @@
 package br.com.bb.compra.controller;
 
-import br.com.bb.compra.model.Cliente;
-import br.com.bb.compra.service.ClienteService;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -15,12 +12,13 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.List;
+
+import br.com.bb.compra.model.Cliente;
+import br.com.bb.compra.service.ClienteService;
 
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 @Path("/clientes")
-@Slf4j
 public class ClienteResource {
 
     @Inject

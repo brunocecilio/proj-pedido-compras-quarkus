@@ -69,5 +69,10 @@ public class ProdutoServiceImpl implements ProdutoService {
                 .build();
     }
 
+    @Override
+    @Transactional
+    public void deletar(Long id) {
+        repository.deleteById(id);
+    }
 
 }

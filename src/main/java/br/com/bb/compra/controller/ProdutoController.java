@@ -5,6 +5,7 @@ import br.com.bb.compra.service.ProdutoService;
 import lombok.RequiredArgsConstructor;
 
 import javax.validation.Valid;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -32,9 +33,16 @@ public class ProdutoController {
 
     @GET
     public Response listar(@QueryParam("filtro") @DefaultValue("") String filtro,
-                           @QueryParam("page") @DefaultValue("0") Integer page,
-                           @QueryParam("size") @DefaultValue("20") Integer size) {
+            @QueryParam("page") @DefaultValue("0") Integer page,
+            @QueryParam("size") @DefaultValue("20") Integer size) {
         return Response.ok(produtoService.listar(filtro, page, size)).build();
+    }
+
+    @DELETE
+    @Path("/{id}")
+    public Response deletar(@PathParam("id") Long id) {
+        produtoService.deletar(id);
+        return Response.noContent().build();
     }
 
 }
