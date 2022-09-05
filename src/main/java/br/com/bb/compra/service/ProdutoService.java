@@ -16,5 +16,7 @@ public interface ProdutoService {
 
     ProdutoListDto listar(String filtro, Integer page, Integer size);
 
+    List<Produto> listar();
+
     void deletar(Long id);
 }

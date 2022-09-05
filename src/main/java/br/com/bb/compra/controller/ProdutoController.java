@@ -32,10 +32,16 @@ public class ProdutoController {
     }
 
     @GET
-    public Response listar(@QueryParam("filtro") @DefaultValue("") String filtro,
+    public Response listarPaginado(@QueryParam("filtro") @DefaultValue("") String filtro,
             @QueryParam("page") @DefaultValue("0") Integer page,
             @QueryParam("size") @DefaultValue("20") Integer size) {
         return Response.ok(produtoService.listar(filtro, page, size)).build();
+    }
+
+    @GET
+    @Path("/unpaged")
+    public Response listarTodos() {
+        return Response.ok(produtoService.listar()).build();
     }
 
     @DELETE

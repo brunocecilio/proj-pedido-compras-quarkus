@@ -70,6 +70,11 @@ public class ProdutoServiceImpl implements ProdutoService {
     }
 
     @Override
+    public List<Produto> listar() {
+        return ProdutoConverter.convertEntityTo(repository.listAll());
+    }
+
+    @Override
     @Transactional
     public void deletar(Long id) {
         repository.deleteById(id);
