@@ -4,6 +4,8 @@ import br.com.bb.compra.model.Produto;
 import br.com.bb.compra.service.ProdutoService;
 import lombok.RequiredArgsConstructor;
 
+import javax.inject.Inject;
+import javax.inject.Named;
 import javax.validation.Valid;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.DefaultValue;
@@ -18,7 +20,9 @@ import javax.ws.rs.core.Response;
 @RequiredArgsConstructor
 public class ProdutoController {
 
-    private final ProdutoService produtoService;
+    @Inject
+    @Named("produtoServiceImpl")
+    ProdutoService produtoService;
 
     @GET
     @Path("/{id}")

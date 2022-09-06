@@ -11,6 +11,7 @@ import io.quarkus.panache.common.Page;
 import lombok.RequiredArgsConstructor;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Named;
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -23,6 +24,7 @@ import static br.com.bb.compra.converter.ProdutoConverter.convertEntityTo;
 
 @ApplicationScoped
 @RequiredArgsConstructor
+@Named("produtoServiceImpl")
 public class ProdutoServiceImpl implements ProdutoService {
 
     private final ProdutoRepository repository;
@@ -30,6 +32,7 @@ public class ProdutoServiceImpl implements ProdutoService {
     @Override
     @Transactional
     public Produto salvar(Produto novoProduto) {
+        novoProduto.setId(null);
         final ProdutoEntity produtoEntity = ProdutoConverter.convertProductTo(novoProduto);
         repository.persist(produtoEntity);
         return convertEntityTo(produtoEntity);

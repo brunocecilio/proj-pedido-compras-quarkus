@@ -1,15 +1,16 @@
 package br.com.bb.compra.service.impl;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Named;
+
 import br.com.bb.compra.model.Cliente;
 import br.com.bb.compra.model.entity.ClienteEntity;
 import br.com.bb.compra.repository.ClienteRepository;
 import br.com.bb.compra.service.ClienteService;
 import lombok.RequiredArgsConstructor;
-
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Named;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @ApplicationScoped
 @Named("clienteServiceImpl")
