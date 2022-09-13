@@ -38,13 +38,23 @@ public class PedidoServiceImpl implements PedidoService {
 
         pedidoEntity.persist();
 
-        // Processar pedido
-
-        // validarEstoque
-        // Baixa no estoque
+        processaEstoque(pedidoEntity);
 
         log.info("O usuario {} iniciou pedido {}", email, pedidoDto);
         return new PedidoResponseDto(pedidoEntity.id);
+    }
+
+    private void processaEstoque(PedidoEntity pedidoEntity) {
+        pedidoEntity.getItens().forEach(item -> {
+            final ProdutoEntity produto = item.getProduto();
+            if (produto.getEstoque() < item.getQuantidade()) {
+                log.warn("Estoque do produto {} insuficiente para concluir o pedido", produto.getNome());
+                throw new RuntimeException("Estoque insuficiente");
+            }
+            final int novoEstoque = produto.getEstoque() - item.getQuantidade();
+            produto.setEstoque(novoEstoque);
+            produto.persist();
+        });
     }
 
     private PedidoEntity criarPedido(ClienteEntity cliente, PedidoRequestDto pedidoDto) {
