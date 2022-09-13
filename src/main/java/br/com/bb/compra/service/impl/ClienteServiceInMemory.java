@@ -31,4 +31,22 @@ public class ClienteServiceInMemory implements ClienteService {
         return new ArrayList<>(MAP.values());
     }
 
+    @Override
+    public Cliente findByEmail(String email) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public List<String> cpfByEmail(String email) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public List<Cliente> mapCliente(String nome) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
 }

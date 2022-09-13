@@ -1,14 +1,20 @@
 package br.com.bb.compra.service.impl;
 
+import static br.com.bb.compra.converter.ClienteConverter.convertDtoTo;
+import static br.com.bb.compra.converter.ClienteConverter.convertEntityTo;
+
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Objects;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
+import javax.transaction.Transactional;
 
 import br.com.bb.compra.model.Cliente;
 import br.com.bb.compra.model.entity.ClienteEntity;
+import br.com.bb.compra.model.enums.PerfilEnum;
 import br.com.bb.compra.repository.ClienteRepository;
+import br.com.bb.compra.security.PasswordUtils;
 import br.com.bb.compra.service.ClienteService;
 import lombok.RequiredArgsConstructor;
 
@@ -20,33 +26,39 @@ public class ClienteServiceImpl implements ClienteService {
     private final ClienteRepository clienteRepository;
 
     @Override
+    @Transactional
     public void salvarCliente(Cliente cliente) {
+        cliente.setPerfil(PerfilEnum.CLIENTE);
 
-        final ClienteEntity entity = ClienteEntity.builder()
-                .email(cliente.getEmail())
-                .cpf(cliente.getCpf())
-                .nome(cliente.getNome())
-                .build();
-        clienteRepository.save(entity);
-        cliente.setId(entity.getId());
+        if (Objects.isNull(cliente.getId())) {
+            cliente.setSenha(PasswordUtils.encode(cliente.getSenha()));
+            final ClienteEntity entidadeNaoGerenciada = convertDtoTo(cliente);
+            clienteRepository.save(entidadeNaoGerenciada);
+        } else {
+            ClienteEntity entity = clienteRepository.findById(cliente.getId());
+            entity.setNome(cliente.getNome());
+            entity.setEmail(cliente.getEmail());
+        }
     }
 
     @Override
     public List<Cliente> getClientes() {
-        return convert(clienteRepository.findAll());
+        return convertEntityTo(clienteRepository.findAll());
     }
 
-    private Cliente convert(ClienteEntity entity) {
-        return Cliente.builder()
-                .id(entity.getId())
-                .cpf(entity.getCpf())
-                .nome(entity.getNome())
-                .email(entity.getEmail())
-                .build();
+    @Override
+    public Cliente findByEmail(String email) {
+        final ClienteEntity entity = clienteRepository.findByEmail(email);
+        return convertEntityTo(entity);
     }
 
-    private List<Cliente> convert(List<ClienteEntity> entities) {
-        return entities.stream().map(this::convert)
-                .collect(Collectors.toList());
+    @Override
+    public List<String> cpfByEmail(String email) {
+        return clienteRepository.findByEmailNamedQuery(email);
+    }
+
+    @Override
+    public List<Cliente> mapCliente(String nome) {
+        return clienteRepository.mapCliente(nome);
     }
 }
