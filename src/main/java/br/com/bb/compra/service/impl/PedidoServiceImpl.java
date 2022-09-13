@@ -10,6 +10,7 @@ import javax.transaction.Transactional;
 import org.eclipse.microprofile.jwt.JsonWebToken;
 
 import br.com.bb.compra.exception.EstoqueInsuficienteException;
+import br.com.bb.compra.exception.OperacaoInvalidaException;
 import br.com.bb.compra.model.PedidoRequestDto;
 import br.com.bb.compra.model.PedidoResponseDto;
 import br.com.bb.compra.model.entity.ClienteEntity;
@@ -48,6 +49,12 @@ public class PedidoServiceImpl implements PedidoService {
     private void processaEstoque(PedidoEntity pedidoEntity) {
         pedidoEntity.getItens().forEach(item -> {
             final ProdutoEntity produto = item.getProduto();
+
+            if (item.getQuantidade() <= 0) {
+                throw new OperacaoInvalidaException(
+                        "Quantidade de itens deve ser maior que zero para o item de ID: " + produto.getId());
+            }
+
             if (produto.getEstoque() < item.getQuantidade()) {
                 log.warn("Estoque do produto {} insuficiente para concluir o pedido", produto.getNome());
                 throw new EstoqueInsuficienteException("Estoque insuficiente do produto de ID: " + produto.getId());
