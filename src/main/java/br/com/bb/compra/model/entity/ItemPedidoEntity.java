@@ -1,7 +1,6 @@
 package br.com.bb.compra.model.entity;
 
-import lombok.Getter;
-import lombok.Setter;
+import java.math.BigDecimal;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,7 +8,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import java.math.BigDecimal;
+
+import lombok.Getter;
+import lombok.Setter;
 
 @Getter
 @Setter

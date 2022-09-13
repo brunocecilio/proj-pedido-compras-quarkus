@@ -1,10 +1,10 @@
 package br.com.bb.compra.security;
 
-import io.smallrye.jwt.build.Jwt;
-import io.smallrye.jwt.build.JwtClaimsBuilder;
-
 import java.time.Instant;
 import java.util.Set;
+
+import io.smallrye.jwt.build.Jwt;
+import io.smallrye.jwt.build.JwtClaimsBuilder;
 
 public class JwtUtils {
 

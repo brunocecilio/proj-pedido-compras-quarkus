@@ -1,11 +1,11 @@
 package br.com.bb.compra.converter;
 
-import br.com.bb.compra.model.Produto;
-import br.com.bb.compra.model.entity.ProdutoEntity;
-
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import br.com.bb.compra.model.Produto;
+import br.com.bb.compra.model.entity.ProdutoEntity;
 
 public class ProdutoConverter {
 

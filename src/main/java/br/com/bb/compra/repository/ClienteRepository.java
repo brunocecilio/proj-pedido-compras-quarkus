@@ -1,14 +1,15 @@
 package br.com.bb.compra.repository;
 
-import br.com.bb.compra.model.Cliente;
-import br.com.bb.compra.model.entity.ClienteEntity;
+import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
-import java.util.List;
+
+import br.com.bb.compra.model.Cliente;
+import br.com.bb.compra.model.entity.ClienteEntity;
 
 @ApplicationScoped
 public class ClienteRepository {

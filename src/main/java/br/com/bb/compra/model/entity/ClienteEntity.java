@@ -1,12 +1,6 @@
 package br.com.bb.compra.model.entity;
 
-import br.com.bb.compra.model.Cliente;
-import br.com.bb.compra.model.enums.PerfilEnum;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.ColumnResult;
@@ -21,7 +15,15 @@ import javax.persistence.NamedNativeQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.SqlResultSetMapping;
 import javax.persistence.Table;
-import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import br.com.bb.compra.model.Cliente;
+import br.com.bb.compra.model.enums.PerfilEnum;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "tb_cliente")

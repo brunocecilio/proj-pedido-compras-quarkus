@@ -1,16 +1,15 @@
 package br.com.bb.compra.model.entity;
 
-import br.com.bb.compra.model.entity.ClienteEntity;
-import br.com.bb.compra.model.entity.ItemPedidoEntity;
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
-import lombok.Getter;
-import lombok.Setter;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import java.util.Set;
+
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Getter

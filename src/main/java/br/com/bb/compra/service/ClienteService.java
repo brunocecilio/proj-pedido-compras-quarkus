@@ -1,9 +1,8 @@
 package br.com.bb.compra.service;
 
+import java.util.List;
 
 import br.com.bb.compra.model.Cliente;
-
-import java.util.List;
 
 public interface ClienteService {
     void salvarCliente(Cliente cliente);

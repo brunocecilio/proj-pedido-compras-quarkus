@@ -1,16 +1,22 @@
 package br.com.bb.compra.security;
 
-import io.quarkus.arc.Priority;
-import io.smallrye.jwt.auth.principal.*;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
+
+import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.inject.Alternative;
+
 import org.jose4j.jwt.JwtClaims;
 import org.jose4j.jwt.MalformedClaimException;
 import org.jose4j.jwt.NumericDate;
 import org.jose4j.jwt.consumer.InvalidJwtException;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.inject.Alternative;
-import java.nio.charset.StandardCharsets;
-import java.util.Base64;
+import io.quarkus.arc.Priority;
+import io.smallrye.jwt.auth.principal.DefaultJWTCallerPrincipal;
+import io.smallrye.jwt.auth.principal.JWTAuthContextInfo;
+import io.smallrye.jwt.auth.principal.JWTCallerPrincipal;
+import io.smallrye.jwt.auth.principal.JWTCallerPrincipalFactory;
+import io.smallrye.jwt.auth.principal.ParseException;
 
 @ApplicationScoped
 @Alternative

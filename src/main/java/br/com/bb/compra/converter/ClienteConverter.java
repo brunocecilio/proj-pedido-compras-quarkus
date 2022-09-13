@@ -1,12 +1,12 @@
 package br.com.bb.compra.converter;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import br.com.bb.compra.model.Cliente;
 import br.com.bb.compra.model.Endereco;
 import br.com.bb.compra.model.entity.ClienteEntity;
 import br.com.bb.compra.model.entity.EnderecoEntity;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class ClienteConverter {
 

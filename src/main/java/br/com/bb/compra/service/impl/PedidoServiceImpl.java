@@ -1,24 +1,24 @@
 package br.com.bb.compra.service.impl;
 
-import br.com.bb.compra.model.Produto;
-import br.com.bb.compra.model.entity.ItemPedidoEntity;
-import br.com.bb.compra.model.entity.PedidoEntity;
-import br.com.bb.compra.model.PedidoRequestDto;
-import br.com.bb.compra.model.PedidoResponseDto;
-import br.com.bb.compra.model.entity.ClienteEntity;
-import br.com.bb.compra.model.entity.ProdutoEntity;
-import br.com.bb.compra.repository.ClienteRepository;
-import br.com.bb.compra.repository.ProdutoRepository;
-import br.com.bb.compra.service.PedidoService;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.eclipse.microprofile.jwt.JsonWebToken;
-
-import javax.enterprise.context.ApplicationScoped;
-import javax.transaction.Transactional;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
+
+import javax.enterprise.context.ApplicationScoped;
+import javax.transaction.Transactional;
+
+import org.eclipse.microprofile.jwt.JsonWebToken;
+
+import br.com.bb.compra.model.PedidoRequestDto;
+import br.com.bb.compra.model.PedidoResponseDto;
+import br.com.bb.compra.model.entity.ClienteEntity;
+import br.com.bb.compra.model.entity.ItemPedidoEntity;
+import br.com.bb.compra.model.entity.PedidoEntity;
+import br.com.bb.compra.model.entity.ProdutoEntity;
+import br.com.bb.compra.repository.ClienteRepository;
+import br.com.bb.compra.service.PedidoService;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @ApplicationScoped
 @RequiredArgsConstructor

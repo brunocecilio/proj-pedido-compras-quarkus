@@ -1,9 +1,9 @@
 package br.com.bb.compra.service;
 
+import java.util.List;
+
 import br.com.bb.compra.model.Produto;
 import br.com.bb.compra.model.ProdutoListDto;
-
-import java.util.List;
 
 public interface ProdutoService {
     Produto salvar(Produto novoProduto);

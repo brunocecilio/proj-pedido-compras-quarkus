@@ -1,5 +1,13 @@
 package br.com.bb.compra.service.impl;
 
+import static br.com.bb.compra.converter.ProdutoConverter.convertEntityTo;
+
+import java.util.List;
+
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Named;
+import javax.transaction.Transactional;
+
 import br.com.bb.compra.converter.ProdutoConverter;
 import br.com.bb.compra.model.Produto;
 import br.com.bb.compra.model.ProdutoListDto;
@@ -9,13 +17,6 @@ import br.com.bb.compra.service.ProdutoService;
 import io.quarkus.hibernate.orm.panache.PanacheQuery;
 import io.quarkus.panache.common.Page;
 import lombok.RequiredArgsConstructor;
-
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Named;
-import javax.transaction.Transactional;
-import java.util.List;
-
-import static br.com.bb.compra.converter.ProdutoConverter.convertEntityTo;
 
 //@RequestScoped para cada request
 //@SessionScoped para cada sessao => cookie JSESSIONID
