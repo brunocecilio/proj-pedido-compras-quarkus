@@ -3,6 +3,7 @@ package br.com.bb.compra.resource;
 import java.util.Objects;
 import java.util.Set;
 
+import javax.inject.Inject;
 import javax.inject.Named;
 import javax.validation.Valid;
 import javax.ws.rs.Consumes;
@@ -27,10 +28,11 @@ import br.com.bb.compra.service.ClienteService;
 @Path("/login")
 public class LoginResource {
 
+    @Inject
     @Named("clienteServiceImpl")
     ClienteService clienteService;
 
-    public LoginResource(ClienteService clienteService) {
+    public LoginResource(@Named("clienteServiceImpl") ClienteService clienteService) {
         this.clienteService = clienteService;
     }
 
